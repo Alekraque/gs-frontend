@@ -1,15 +1,27 @@
 "use client"
-import { InputLogin } from "@/app/components/inputLogin";
+import { InputLogin } from "@/app/components/inputLogin/inputLogin";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [hasError, setHasError] = useState(false);
+  const [showNotification, setShowNotification] = useState<boolean>(false)
+  const [notificationType, setNotificationType] = useState({
+    type: '',
+    title: '',
+    description: ''
+  })
+
+  useEffect(() => {
+    if(showNotification) {
+      setTimeout(()=> { setShowNotification(false) }, 3000)
+    }
+  }, [showNotification])
   const router = useRouter();
 
   const baseURL = process.env.NEXT_PUBLIC_BASE_URL_API
@@ -28,7 +40,7 @@ export default function Login() {
       setHasError(false);
       setErrorMessage("");
     }
-  };
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,6 +76,27 @@ export default function Login() {
     }
   }
 
+  const handleLogin = () => {
+
+    if(!email || !password) {
+      setNotificationType({
+        type: "danger",
+        title: "Preencha todos os campos",
+        description: "Algum campo nao foi preenchido corretamente, tente novamente"
+    })
+      setShowNotification(true)
+      return
+  }
+        setNotificationType({
+            type: 'success',
+            title: "Cadastro realizado com sucesso!",
+            description: 'Redirecionando para a pagina de login'
+        })
+            setTimeout(() => router.push("/busque-abrigo"), 2000)
+            setShowNotification(true)
+    }
+
+
   return (
     <div className="flex flex-col justify-center bg-white p-8 rounded-lg shadow-md w-full min-h-screen mx-auto">
       <h2 className="text-rose-800 text-5xl font-bold text-center mb-6">Entrar no Abrigo-Já</h2>
@@ -92,6 +125,7 @@ export default function Login() {
         </div>
         <div className="flex flex-col justify-center items-center">
           <button
+          onClick={handleLogin}
             type="submit"
             className="bg-rose-700 text-white px-4 py-2 rounded hover:bg-rose-800 transition"
           >
