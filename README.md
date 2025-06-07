@@ -5,13 +5,14 @@ Aplicação web desenvolvida com **Next.js + TypeScript** que permite ao usuári
 
 ---
 
-## 🚀 Funcionalidades
+## ⚠️ Ativação da API
 
-- Busca de endereço a partir do CEP (ViaCEP).
-- Geolocalização do endereço via OpenStreetMap (Nominatim).
-- Integração com API Java para listar abrigos disponíveis.
-- Exibição de localização no mapa (Leaflet.js).
-- Sugestão de 3 abrigos aleatórios próximos à região informada.
+A API está hospedada gratuitamente na plataforma **Render**, e por isso pode ficar inativa após um período de inatividade.  
+**Antes de usar o site, acesse o link abaixo para "acordar" a API**:
+
+👉 [https://api-java-1gus.onrender.com](https://api-java-1gus.onrender.com)
+
+Espere alguns segundos até que ela seja reativada. Após isso, você poderá usar normalmente o sistema de login e a busca de abrigos.
 
 ---
 
@@ -36,6 +37,16 @@ O sistema possui um **login pré-configurado** para testes:
 - **Senha:** 1234
 
 Após realizar o login, o usuário pode buscar abrigos por CEP normalmente.
+
+---
+
+## 🚀 Funcionalidades
+
+- Busca de endereço a partir do CEP (ViaCEP).
+- Geolocalização do endereço via OpenStreetMap (Nominatim).
+- Integração com API Java para listar abrigos disponíveis.
+- Exibição de localização no mapa (Leaflet.js).
+- Sugestão de 3 abrigos aleatórios próximos à região informada.
 
 ---
 
