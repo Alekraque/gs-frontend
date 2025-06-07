@@ -67,8 +67,8 @@ Após realizar o login, o usuário pode buscar abrigos por CEP normalmente.
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/busque-abrigo-frontend.git
-cd busque-abrigo-frontend
+git clone [https://github.com/seu-usuario/busque-abrigo-frontend.git](https://github.com/Alekraque/gs-frontend)
+cd abrigo-ja
 
 # 2. Instale as dependências
 npm install
