@@ -3,7 +3,6 @@ import { InputLogin } from "@/app/components/inputLogin/inputLogin";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { userData } from "@/app/interfaces/userData";
 import Notification from "@/app/components/notification/notification";
 
 export default function Login() {
