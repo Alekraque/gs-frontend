@@ -28,6 +28,17 @@ Caso isso ocorra, digite outro CEP ou utilize um dos seguintes exemplos que func
 
 ---
 
+## 🔐 Login
+
+O sistema possui um **login pré-configurado** para testes:
+
+- **Email:** admin@fiap.com
+- **Senha:** 1234
+
+Após realizar o login, o usuário pode buscar abrigos por CEP normalmente.
+
+---
+
 ## 🧪 Tecnologias utilizadas
 
 - [Next.js](https://nextjs.org/)
