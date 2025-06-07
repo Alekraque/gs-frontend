@@ -1,4 +1,4 @@
-import { AboutSection, ContactSection, FunctionalSection, HeroSection } from "./components/Sections";
+import { AboutSection, ContactSection, FunctionalSection, HeroSection } from "./components/sections/Sections";
 
 export default function Home() {
   return (
