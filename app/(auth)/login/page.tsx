@@ -2,10 +2,15 @@
 import { InputLogin } from "@/app/components/inputLogin/inputLogin";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { userData } from "@/app/interfaces/userData";
+import Notification from "@/app/components/notification/notification";
 
 export default function Login() {
+  const [userData, setUserData] = useState<userData>({
+    email: "",
+    password: ""
+  })
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -16,6 +21,7 @@ export default function Login() {
     title: '',
     description: ''
   })
+
 
   useEffect(() => {
     if(showNotification) {
@@ -45,12 +51,6 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setHasError(true);
-      setErrorMessage("Por favor, preencha email e senha.");
-      return;
-    }
-
     try {
       const response = await axios.post(`${baseURL}/login`, {
         email,
@@ -61,7 +61,7 @@ export default function Login() {
       const userData = {
         name: response.data.userName,
         email: response.data.email,
-      };
+      }
 
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("user", JSON.stringify(userData));
@@ -78,7 +78,7 @@ export default function Login() {
 
   const handleLogin = () => {
 
-    if(!email || !password) {
+    if(!userData.email || !userData.password) {
       setNotificationType({
         type: "danger",
         title: "Preencha todos os campos",
@@ -98,7 +98,15 @@ export default function Login() {
 
 
   return (
+
     <div className="flex flex-col justify-center bg-white p-8 rounded-lg shadow-md w-full min-h-screen mx-auto">
+      {showNotification &&
+        <Notification 
+          title= {notificationType.title}
+          type={notificationType.type} 
+          description={notificationType.description}
+          onClose={() => setShowNotification(false)}/>
+      }
       <h2 className="text-rose-800 text-5xl font-bold text-center mb-6">Entrar no Abrigo-Já</h2>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="flex flex-col">
