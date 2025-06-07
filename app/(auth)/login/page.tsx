@@ -7,10 +7,7 @@ import { userData } from "@/app/interfaces/userData";
 import Notification from "@/app/components/notification/notification";
 
 export default function Login() {
-  const [userData, setUserData] = useState<userData>({
-    email: "",
-    password: ""
-  })
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -78,7 +75,7 @@ export default function Login() {
 
   const handleLogin = () => {
 
-    if(!userData.email || !userData.password) {
+    if(!email || !password) {
       setNotificationType({
         type: "danger",
         title: "Preencha todos os campos",
