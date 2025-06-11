@@ -124,7 +124,7 @@ A API está com CORS habilitado para:
 
 ```
 http://localhost:3000
-https://abrigo-ja-rosy.vercel.app
+https://abrigo-ja-nine.vercel.app
 
 ```
 
